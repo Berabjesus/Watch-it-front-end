@@ -1,0 +1,33 @@
+/*
+*  CSS TABLE OF CONTENTS
+*
+*  1.0 - Global values
+*/
+
+/* Global values */
+
+:root {
+  --theme-1: #42B5E8;
+  --theme-2: #2A313A;
+  --theme-3: #97E493;
+}
+
+.bg-theme-1 {
+  background: var(--theme-1);
+}
+
+.bg-theme-2 {
+  background: var(--theme-2);
+}
+
+.bg-theme-3 {
+  background: var(--theme-3);
+}
+
+.border-custom {
+  border: 2px dashed red;
+}
+
+.vh-100 {
+  height: 100vh;
+}

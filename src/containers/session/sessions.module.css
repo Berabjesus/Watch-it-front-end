@@ -1,0 +1,4 @@
+.fieldset {
+  border: 1px solid var(--theme-2);
+  border-radius: 10px;
+}

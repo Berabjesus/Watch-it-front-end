@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+/*eslint-disable*/
+import React from 'react';
+import { Provider } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
+import Header from './containers/navigation/header'
+import Login from './containers/session/login'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => (
+  <>
+  <Header />
+    <div className='pt-5'>
+      <Switch>
+        <Route exact path="/" component={Login} />
+      </Switch>
     </div>
-  );
-}
+  </>
+);
 
 export default App;
