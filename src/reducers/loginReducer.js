@@ -18,8 +18,9 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        loggedIn: true,
+        isLoggedIn: true,
         token: action.payload.token,
+        error: null,
       };
     case loginTypes.LOGIN_FAIL:
       return {

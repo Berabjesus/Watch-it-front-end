@@ -28,11 +28,13 @@ export const login = (credentials) => (dispatch) => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
+      if (data.status === 'Error') {
+        throw new Error(data.message);
+      }
       dispatch(loginSuccess(data));
       return data;
     })
     .catch((error) => {
-      console.log(error.message);
       dispatch(loginFail(error.message));
       return error;
     });
