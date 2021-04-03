@@ -28,6 +28,6 @@
   border: 2px dashed red;
 }
 
-.vh-100 {
-  height: 100vh;
+.vhc-100 {
+  height: calc(100vh - 50px);
 }
