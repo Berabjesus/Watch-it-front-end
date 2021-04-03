@@ -1,21 +1,21 @@
-import * as loginTypes from '../types/loginTypes';
+import * as userTypes from '../types/userTypes';
 
-export const loggingIn = () => ({
-  type: loginTypes.LOGIN_REQUEST,
+export const fetchingData = () => ({
+  type: userTypes.USER_DATA_FETCH_REQUEST,
 });
 
-export const loginSuccess = (data) => ({
-  type: loginTypes.LOGIN_SUCCESS,
+export const fetchSuccess = (data) => ({
+  type: userTypes.USER_DATA_FETCH_SUCCESS,
   payload: data,
 });
 
-export const loginFail = (data) => ({
-  type: loginTypes.LOGIN_FAIL,
+export const fetchFail = (data) => ({
+  type: userTypes.USER_DATA_FETCH_FAIL,
   payload: data,
 });
 
-export const login = (credentials) => (dispatch) => {
-  dispatch(loggingIn());
+export const query = (credentials) => (dispatch) => {
+  dispatch(fetchingData());
   fetch('http://localhost:3000/api/v1/login/', {
     method: 'POST',
     mode: 'cors',
@@ -30,11 +30,11 @@ export const login = (credentials) => (dispatch) => {
       if (data.status === 'Error') {
         throw new Error(data.message);
       }
-      dispatch(loginSuccess(data));
+      dispatch(fetchSuccess(data));
       return data;
     })
     .catch((error) => {
-      dispatch(loginFail(error.message));
+      dispatch(fetchFail(error.message));
       return error;
     });
 };
