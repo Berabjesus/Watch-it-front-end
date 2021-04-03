@@ -4,7 +4,7 @@ const initialState = {
   loading: false,
   isLoggedIn: false,
   token: null,
-  error: '',
+  error: null,
 };
 
 const loginReducer = (state = initialState, action) => {

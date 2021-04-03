@@ -27,10 +27,12 @@ export const login = (credentials) => (dispatch) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       dispatch(loginSuccess(data));
       return data;
     })
     .catch((error) => {
+      console.log(error.message);
       dispatch(loginFail(error.message));
       return error;
     });

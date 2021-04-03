@@ -31,3 +31,10 @@
 .vhc-100 {
   height: calc(100vh - 50px);
 }
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
