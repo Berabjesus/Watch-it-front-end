@@ -63,7 +63,7 @@ const Login = () => {
               </div>
               <div className='d-flex flex-column align-items-start'>
               {
-                loginStatus.error && loginStatus.error.length > 0 && loginStatus.error.map(err => {
+                loginStatus.error && Array.isArray(loginStatus.error) && loginStatus.error.length > 0 && loginStatus.error.map(err => {
                   return <em className="h6 text-danger text-decoration-none">{err}</em>
                 })
               }

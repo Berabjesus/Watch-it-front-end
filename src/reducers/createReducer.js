@@ -16,11 +16,14 @@ const createReducer = (state = initialState, action) => {
     case createTypes.CREATE_SUCCESS:
       return {
         ...state,
+        sending: false,
         sent: true,
+        error: false,
       };
     case createTypes.CREATE_FAIL:
       return {
         ...state,
+        sending: false,
         error: action.payload,
       };
     default: return state;

@@ -4,9 +4,8 @@ export const creating = () => ({
   type: createTypes.CREATE_REQUEST,
 });
 
-export const createSuccess = (data) => ({
+export const createSuccess = () => ({
   type: createTypes.CREATE_SUCCESS,
-  payload: data,
 });
 
 export const createFail = (data) => ({
@@ -14,7 +13,7 @@ export const createFail = (data) => ({
   payload: data,
 });
 
-export const create = (data) => (dispatch) => {
+export const create = (data, token) => (dispatch) => {
   dispatch(creating());
   fetch('http://localhost:3000/api/v1/watchlists/', {
     method: 'POST',
@@ -22,6 +21,7 @@ export const create = (data) => (dispatch) => {
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
+      Authorization: `bearer ${token}`,
     },
     body: JSON.stringify(data),
   })
@@ -30,11 +30,9 @@ export const create = (data) => (dispatch) => {
       if (data.status === 'Error') {
         throw new Error(data.message);
       }
-      dispatch(createSuccess(data));
-      return data;
+      dispatch(createSuccess());
     })
     .catch((error) => {
-      dispatch(createFail(error.message));
-      return error;
+      dispatch(createFail(error.message.split(',')));
     });
 };
