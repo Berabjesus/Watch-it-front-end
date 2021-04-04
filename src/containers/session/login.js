@@ -36,7 +36,7 @@ const Login = () => {
           <SpiralSpinner size={120} frontColor="#42B5E8" loading />
           <p className="h6 font-weight-light mt-3">Logging In...</p>
         </span>
-      ) : loginStatus.isLoggedIn && loginStatus.token ? (<Redirect to="/home" />) : (
+      ) : loginStatus.isLoggedIn && loginStatus.token ? (<Redirect to={`/home/${loginStatus.username}`} />) : (
         <section className="d-flex justify-content-center pt-5 vhc-100">
           <fieldset className={`col-9 col-md-6 align-self-start p-3 pb-4 shadow ${sessionsCSs.fieldset} ${animateOnError}`}>
             <form className="d-flex flex-column" method="post">
@@ -56,7 +56,7 @@ const Login = () => {
               <div className="d-flex flex-column align-items-center">
                 <button className="btn text-white align-self-center mt-2 bg-theme-2" type="button" onClick={handleLogin}>Login</button>
                 <p className="pt-1">or</p>
-                <Link to="/" className="text-dark mb-0 btn-link border-bottom border-dark"><p>Sign up</p></Link>
+                <Link to="/signup" className="text-dark mb-0 btn-link border-bottom border-dark"><p>Sign up</p></Link>
               </div>
             </form>
           </fieldset>

@@ -7,9 +7,12 @@ import { SpiralSpinner } from 'react-spinners-kit';
 import Item from '../../components/home/item'
 import homeCss from './home.module.css';
 
-const Home = () => {
+const Home = () => {  
   const userWatchList = useSelector((state) => state.userWatchList);
   const loginStatus = useSelector((state) => state.session);
+  if (!loginStatus.isLoggedIn) {
+      return <Redirect to="/login" />
+  }
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(query(`bearer ${loginStatus.token}`))
@@ -47,7 +50,7 @@ const Home = () => {
           </div>
         ) : (
           <div>
-            <em className='h6'>You have {userWatchList.data.length} items in your watchlist. Click on the + button to add items.</em>
+            <em className='h6'>You have {userWatchList.data && userWatchList.data.length} items in your watchlist. Click on the + button to add items.</em>
             {
               userWatchList.data && userWatchList.data.map(item => {
                 return <Item key={item.id} id={item.id} title={item.title} date={item.date}/>
