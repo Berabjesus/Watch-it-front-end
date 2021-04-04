@@ -4,7 +4,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { SpiralSpinner } from 'react-spinners-kit';
-import sessionsCSs from './sessions.module.css';
+import createCSs from './create.module.css';
 import { login } from '../../actions/loginAction';
 
 const Login = () => {
@@ -16,7 +16,7 @@ const Login = () => {
 
   React.useEffect(() => {
     if (loginStatus.error) {
-      setAnimateOnError(sessionsCSs.shake);
+      setAnimateOnError(createCSs.shake);
     }
   }, [loginStatus.error]);
 
@@ -35,9 +35,9 @@ const Login = () => {
           <SpiralSpinner size={120} frontColor="#42B5E8" loading />
           <p className="h6 font-weight-light mt-3">Logging In...</p>
         </span>
-      ) : loginStatus.isLoggedIn && loginStatus.token ? (<Redirect to={`/home/${loginStatus.username}`} />) : (
+      ) : !loginStatus.isLoggedIn || !loginStatus.token ? (<Redirect to="/login" />) : (
         <section className="d-flex justify-content-center pt-5 vhc-100">
-          <fieldset className={`col-9 col-md-6 align-self-start p-3 pb-4 shadow ${sessionsCSs.fieldset} ${animateOnError}`}>
+          <fieldset className={`col-9 col-md-6 align-self-start p-3 pb-4 shadow ${createCSs.fieldset} ${animateOnError}`}>
             <form className="d-flex flex-column" method="post">
               <div className="input-group mb-2">
                 <label className="w-100" htmlFor="username">

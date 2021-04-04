@@ -24,7 +24,7 @@ const Home = () => {
     return (
       <span className="d-flex flex-column align-items-center centered">
           <SpiralSpinner size={120} frontColor="#42B5E8" loading />
-          <p className="h6 font-weight-light mt-3">Logging In...</p>
+          <p className="h6 font-weight-light mt-3">Loading data...</p>
         </span>
     )
   } else if (userWatchList.error !== null) {
@@ -44,7 +44,7 @@ const Home = () => {
         userWatchList.data && userWatchList.data.length === 0 ? (
           <div className='d-flex flex-column'>
             <em className='h5'>You have no items in your watchlist. Click on the + button to add</em>
-            <Link to="/" className={`mt-5 align-self-center d-flex flex-column align-items-center justify-content-center ${homeCss.round_button}`}>
+            <Link to={`/create/${loginStatus.username}`} className={`mt-5 align-self-center d-flex flex-column align-items-center justify-content-center ${homeCss.round_button}`}>
               <p className=" display-2" >+</p>
             </Link>
           </div>
