@@ -5,3 +5,11 @@
   width: 30px;
   height: 30px;
 }
+
+.round_button {
+  width: 150px;
+  height: 150px;
+  border: 1px solid var(--theme-2);
+  border-radius: 50%;
+  background: var(--theme-3);
+}

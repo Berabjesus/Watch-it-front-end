@@ -3,6 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import Header from './containers/navigation/header'
+import Footer from './containers/navigation/footer'
 import Signup from './containers/session/signup'
 import Login from './containers/session/login'
 import Home from './containers/home/home'
@@ -18,6 +19,7 @@ const App = () => (
         <Route exact path="/home" component={Home} />
       </Switch>
     </div>
+  <Footer />
   </Provider>
 );
 

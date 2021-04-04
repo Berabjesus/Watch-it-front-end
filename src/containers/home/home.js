@@ -35,18 +35,25 @@ const Home = () => {
       <section className="pt-3">
       <header className='d-flex justify-content-between pb-1 border-bottom pb-3'>
         <h4>Hi {loginStatus.username}</h4>
-        <Link to="/" className={`text-center font-weight-bold text-white ${homeCss.userIcon}`}>{loginStatus.username[0]}</Link>
+        <Link to="/" className={`d-flex align-items-center justify-content-center font-weight-bold text-white p-1 ${homeCss.userIcon}`}>{loginStatus.username[0] && loginStatus.username[0].toUpperCase()}</Link>
       </header>
       {
         userWatchList.data && userWatchList.data.length === 0 ? (
-          <div>
-            <h5>You have 0 items</h5>
-            <p>add</p>
+          <div className='d-flex flex-column'>
+            <em className='h5'>You have no items in your watchlist. Click on the + button to add</em>
+            <Link to="/" className={`mt-5 align-self-center d-flex flex-column align-items-center justify-content-center ${homeCss.round_button}`}>
+              <p className=" display-2" >+</p>
+            </Link>
           </div>
         ) : (
-          userWatchList.data && userWatchList.data.map(item => {
-            return <Item key={item.id} id={item.id} title={item.title} date={item.date}/>
-          })
+          <div>
+            <em className='h6'>You have {userWatchList.data.length} items in your watchlist. Click on the + button to add items.</em>
+            {
+              userWatchList.data && userWatchList.data.map(item => {
+                return <Item key={item.id} id={item.id} title={item.title} date={item.date}/>
+              })
+            }
+          </div>
         )
       }
     </section>

@@ -52,7 +52,6 @@ export const signup = (credentials) => (dispatch) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       if (data.status === 'Error') {
         throw new Error(data.message);
       }
@@ -60,7 +59,7 @@ export const signup = (credentials) => (dispatch) => {
       return data;
     })
     .catch((error) => {
-      dispatch(loginFail(error.message));
+      dispatch(loginFail(error.message.split(',')));
       return error;
     });
 };

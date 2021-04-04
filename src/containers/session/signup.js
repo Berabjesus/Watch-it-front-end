@@ -61,7 +61,13 @@ const Login = () => {
                   <input placeholder="Password Confirmation" className="form-control border border-dark" id="password_Confirmation" type="password" onChange={(e) => setpasswordConfrim(e.target.value)} required />
                 </label>
               </div>
-              <p className="h6 text-danger text-center"><em>{loginStatus.error}</em></p>
+              <div className='d-flex flex-column align-items-start'>
+              {
+                loginStatus.error && loginStatus.error.length > 0 && loginStatus.error.map(err => {
+                  return <em className="h6 text-danger text-decoration-none">{err}</em>
+                })
+              }
+              </div>
               <div className="d-flex flex-column align-items-center">
                 <button className="btn text-white align-self-center mt-2 bg-theme-2" type="button" onClick={handleLogin}>Sign Up</button>
                 <p className="pt-1">or</p>
