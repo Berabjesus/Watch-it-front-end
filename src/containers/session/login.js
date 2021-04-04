@@ -23,8 +23,8 @@ const Login = () => {
 
   const handleLogin = () => {
     const credentials = {
-      username,
-      password,
+      username: username.trim(),
+      password: password.trim()
     };
     dispatch(login(credentials));
   };
@@ -36,7 +36,7 @@ const Login = () => {
           <SpiralSpinner size={120} frontColor="#42B5E8" loading />
           <p className="h6 font-weight-light mt-3">Logging In...</p>
         </span>
-      ) : loginStatus.isLoggedIn ? (<Redirect to="/home" />) : (
+      ) : loginStatus.isLoggedIn && loginStatus.token ? (<Redirect to="/home" />) : (
         <section className="d-flex justify-content-center pt-5 vhc-100">
           <fieldset className={`col-9 col-md-6 align-self-start p-3 pb-4 shadow ${sessionsCSs.fieldset} ${animateOnError}`}>
             <form className="d-flex flex-column" method="post">

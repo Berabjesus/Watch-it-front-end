@@ -14,23 +14,24 @@ export const fetchFail = (data) => ({
   payload: data,
 });
 
-export const query = (credentials) => (dispatch) => {
+export const query = (token) => (dispatch) => {
+  console.log(token);
   dispatch(fetchingData());
-  fetch('http://localhost:3000/api/v1/login/', {
-    method: 'POST',
+  fetch('http://localhost:3000/api/v1/watchlists/', {
+    method: 'GET',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
-      Accept: 'application/json',
+      Authorization: token,
     },
-    body: JSON.stringify(credentials),
   })
     .then((response) => response.json())
     .then((data) => {
       if (data.status === 'Error') {
         throw new Error(data.message);
       }
-      dispatch(fetchSuccess(data));
+      console.log(data.data);
+      dispatch(fetchSuccess(data.data));
       return data;
     })
     .catch((error) => {

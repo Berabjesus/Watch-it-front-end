@@ -12,6 +12,15 @@
   --theme-3: #97E493;
 }
 
+h1,h2,h3,h4,h5,h6 {
+  font-family: Helvetica, sans-serif;
+  font-weight: 800;
+}
+p,a {
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+}
+
 .bg-theme-1 {
   background: var(--theme-1);
 }

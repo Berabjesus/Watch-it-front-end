@@ -3,6 +3,7 @@ import * as loginTypes from '../types/loginTypes';
 const initialState = {
   loading: false,
   isLoggedIn: false,
+  username: '',
   token: null,
   error: null,
 };
@@ -19,6 +20,7 @@ const loginReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         isLoggedIn: true,
+        username: action.payload.username,
         token: action.payload.token,
         error: null,
       };

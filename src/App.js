@@ -10,7 +10,7 @@ import store from './store'
 const App = () => (
   <Provider store={store}>
   <Header />
-    <div className='pt-5'>
+    <div className='px-2 pt-5'>
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/home" component={Home} />
