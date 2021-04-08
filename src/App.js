@@ -7,6 +7,7 @@ import Signup from './containers/session/signup';
 import Login from './containers/session/login';
 import Home from './containers/home/home';
 import Create from './containers/create/create';
+import View from './containers/view/view';
 
 import store from './store';
 
@@ -20,6 +21,7 @@ const App = () => (
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/create/:username" component={Create} />
+        <Route exact path="/view/:id" component={View} />
       </Switch>
     </div>
     <Footer />
