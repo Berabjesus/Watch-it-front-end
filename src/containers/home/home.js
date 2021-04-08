@@ -46,17 +46,14 @@ const Home = () => {
   return (
     <section className="pt-3">
       <header className="d-flex justify-content-between border-bottom pb-3">
-        <h4>
-          Hi
-          {loginStatus.username}
-        </h4>
+        <h4>{`hi ${loginStatus.username}`}</h4>
         <Link to="/" className={`d-flex align-items-center justify-content-center font-weight-bold text-white p-1 ${homeCss.userIcon}`}>{loginStatus.username[0] && loginStatus.username[0].toUpperCase()}</Link>
       </header>
       {
         userWatchList.data && userWatchList.data.length === 0 ? (
           <div className="d-flex flex-column">
             <em className="h5">You have no items in your watchlist. Click on the + button to add</em>
-            <Link to={`/create/${loginStatus.username}`} className={`mt-5 align-self-center d-flex flex-column align-items-center justify-content-center ${homeCss.round_button}`}>
+            <Link to={`/create/${loginStatus.username}`} className={`mt-5 align-self-center d-flex flex-column align-items-center justify-content-center shadow ${homeCss.round_button}`}>
               <p className=" display-2">+</p>
             </Link>
           </div>
