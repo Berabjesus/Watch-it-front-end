@@ -1,14 +1,14 @@
-/* eslint-disable */
-/* eslint-disable no-nested-ternary */
+// /* eslint disable */
 
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import sessionsCSs from './sessions.module.css';
 import { signup } from '../../actions/loginAction';
 import LoadingIcon from '../../components/common/loadingIcon';
 import UsernameAndPassword from '../../components/session/usernameAndPassword';
 import { setCredentials } from '../../helpers/tokenHandler';
+import Buttons from '../../components/session/buttons';
 
 const Login = () => {
   const loginStatus = useSelector((state) => state.session);
@@ -19,19 +19,20 @@ const Login = () => {
   const [animateOnError, setAnimateOnError] = React.useState('');
 
   React.useEffect(() => {
-    console.log(loginStatus.error);
     if (loginStatus.error) {
       setAnimateOnError(sessionsCSs.shake);
     }
   }, [loginStatus.error]);
 
-  const handleLogin = () => {
-    const credentials = {
-      username: username.trim(),
-      password: password.trim(),
-      password_confirmation: passwordConfrim.trim(),
-    };
-    dispatch(signup(credentials));
+  const handleSignUp = () => {
+    if (username && password) {
+      const credentials = {
+        username: username.trim(),
+        password: password.trim(),
+        password_confirmation: passwordConfrim.trim(),
+      };
+      dispatch(signup(credentials));
+    }
   };
 
   if (loginStatus.loading) {
@@ -55,14 +56,10 @@ const Login = () => {
           </div>
           <div className="d-flex flex-column align-items-start">
             {
-            loginStatus.error && Array.isArray(loginStatus.error) && loginStatus.error.length > 0 && loginStatus.error.map((err) => <em className="h6 text-danger text-decoration-none">{err}</em>)
+            loginStatus.error && Array.isArray(loginStatus.error) && loginStatus.error.length > 0 && loginStatus.error.map((err) => <em key={err} className="h6 text-danger text-decoration-none">{err}</em>)
           }
           </div>
-          <div className="d-flex flex-column align-items-center">
-            <button className="btn text-white align-self-center mt-2 bg-theme-2" type="button" onClick={handleLogin}>Sign Up</button>
-            <p className="pt-1">or</p>
-            <Link to="/login" className="text-dark mb-0 btn-link border-bottom border-dark"><p>Login</p></Link>
-          </div>
+          <Buttons label1="Sign Up" label2="Login" handleClick={handleSignUp} />
         </form>
       </fieldset>
     </section>

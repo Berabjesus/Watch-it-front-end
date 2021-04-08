@@ -1,14 +1,15 @@
-/* eslint-disable */
-/* eslint-disable no-nested-ternary */
+// /* eslint disable */
 
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import sessionsCSs from './sessions.module.css';
 import { login } from '../../actions/loginAction';
-import {setCredentials} from '../../helpers/tokenHandler'
-import LoadingIcon from '../../components/common/loadingIcon'
-import UsernameAndPassword from '../../components/session/usernameAndPassword'
+import { setCredentials } from '../../helpers/tokenHandler';
+import LoadingIcon from '../../components/common/loadingIcon';
+import UsernameAndPassword from '../../components/session/usernameAndPassword';
+import Buttons from '../../components/session/buttons';
+
 const Login = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.session);
@@ -23,40 +24,37 @@ const Login = () => {
   }, [loginStatus.error]);
 
   const handleLogin = () => {
-    const credentials = {
-      username: username.trim(),
-      password: password.trim()
-    };
-    dispatch(login(credentials));
+    if (username && password) {
+      const credentials = {
+        username: username.trim(),
+        password: password.trim(),
+      };
+      dispatch(login(credentials));
+    }
   };
 
   if (loginStatus.loading) {
     return (
-      <LoadingIcon/>
-    )
-  } else if(loginStatus.isLoggedIn && loginStatus.token){
-    setCredentials(loginStatus.username, loginStatus.token)
+      <LoadingIcon />
+    );
+  } if (loginStatus.isLoggedIn && loginStatus.token) {
+    setCredentials(loginStatus.username, loginStatus.token);
     return (
       <Redirect to={`/home/${loginStatus.username}`} />
-    )
-  } else {
-    return (
-      <section className="d-flex justify-content-center pt-5 vhc-100">
+    );
+  }
+  return (
+    <section className="d-flex justify-content-center pt-5 vhc-100">
       <fieldset className={`col-9 col-md-6 align-self-start p-3 pb-4 shadow ${sessionsCSs.fieldset} ${animateOnError}`}>
         <form className="d-flex flex-column" method="post">
-          <UsernameAndPassword setUsername = {setUsername} setPassword = {setPassword}/>
+          <UsernameAndPassword setUsername={setUsername} setPassword={setPassword} />
           <p className="h6 text-danger text-center"><em>{loginStatus.error}</em></p>
-          <div className="d-flex flex-column align-items-center">
-            <button className="btn text-white align-self-center mt-2 bg-theme-2" type="button" onClick={handleLogin}>Login</button>
-            <p className="pt-1">or</p>
-            <Link to="/signup" className="text-dark mb-0 btn-link border-bottom border-dark"><p>Sign up</p></Link>
-          </div>
+          <Buttons label1="Login" label2="Sign up" handleClick={handleLogin} />
         </form>
       </fieldset>
     </section>
 
-    )
-  }
+  );
 };
 
 export default Login;
