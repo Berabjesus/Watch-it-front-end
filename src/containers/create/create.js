@@ -62,7 +62,7 @@ const Create = () => {
           <div className="input-group mb-2">
             <label className="w-100" htmlFor="content">
               Content
-              <textarea cols='20' rows='5' placeholder="content" className="form-control border border-dark" id="content" type='text' onChange={(e) => setContent(e.target.value)} required />
+              <textarea cols='20' rows='3' placeholder="content" className="form-control border border-dark" id="content" type='text' onChange={(e) => setContent(e.target.value)} required />
             </label>
           </div>
           <div className="input-group mb-2">

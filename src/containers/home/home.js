@@ -6,16 +6,36 @@ import {query} from '../../actions/userActions'
 import { SpiralSpinner } from 'react-spinners-kit';
 import Item from '../../components/home/item'
 import homeCss from './home.module.css';
+import {loginSuccess } from '../../actions/loginAction';
+import {getToken, getUsername} from '../../helpers/tokenHandler'
 
-const Home = () => {  
-  const userWatchList = useSelector((state) => state.userWatchList);
-  const loginStatus = useSelector((state) => state.session);
-  if (!loginStatus.isLoggedIn) {
-      return <Redirect to="/login" />
-  }
+const Home = () => {
   const dispatch = useDispatch();
+  const loginStatus = useSelector((state) => state.session);
+  console.log(getToken());
+  if (!loginStatus.isLoggedIn) {
+    if (getToken()) {
+      console.log('token found');
+      console.log(getToken());
+      dispatch(query(getToken()));
+      dispatch(loginSuccess({
+        status: '202',
+        message: 'login success',
+        username: getUsername(),
+        token: getToken()
+      }))
+    } else {
+      return <Redirect to="/login" />
+    }
+  }
+  const userWatchList = useSelector((state) => state.userWatchList);
   React.useEffect(() => {
-    dispatch(query(`bearer ${loginStatus.token}`))
+    console.log('whyyy');
+    console.log('tokkkenenenens');
+    console.log(loginStatus.token);
+    if (loginStatus.isLoggedIn) {
+      dispatch(query(loginStatus.token))
+    }
   }, []);
   console.log(userWatchList.data);
   //       <input type="range" name="" id=""/>

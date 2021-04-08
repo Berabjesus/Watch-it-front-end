@@ -30,6 +30,8 @@ export const login = (credentials) => (dispatch) => {
       if (data.status === 'Error') {
         throw new Error(data.message);
       }
+      console.log('herherhreh');
+      console.log(data);
       dispatch(loginSuccess(data));
       return data;
     })

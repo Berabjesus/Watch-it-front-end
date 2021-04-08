@@ -22,7 +22,7 @@ export const query = (token) => (dispatch) => {
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: token,
+      Authorization: `bearer ${token}`,
     },
   })
     .then((response) => response.json())

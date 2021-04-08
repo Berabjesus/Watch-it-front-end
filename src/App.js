@@ -14,14 +14,14 @@ import store from './store';
 const App = () => (
   <Provider store={store}>
     <Header />
-    <div className="px-2 pt-5">
+    <div className="px-2 pt-5 mb-3">
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/home/:id" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/create/:username" component={Create} />
-        <Route exact path="/view/:id" component={View} />
+        <Route exact path="/view/:user/:id" component={View} />
       </Switch>
     </div>
     <Footer />
