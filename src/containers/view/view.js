@@ -61,7 +61,7 @@ const View = () => {
     return <Redirect to={`/home/${loginStatus.username}`} />
   } else {
     return (
-      <section className=''>
+      <section className='shadow'>
       <div className="card mt-5">
         {
           edit ? (<input className='form-control mb-2 font-weight-bold' type="text" name="title" id="title" value={title} onChange={e => setTitle(e.target.value)}/>) : (<h3 className="card-header">{filteredItem.title}</h3>)
