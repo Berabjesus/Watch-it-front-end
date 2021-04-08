@@ -46,6 +46,9 @@ const View = () => {
     };
     dispatch(update(id, data, loginStatus.token));
   }
+  const handleDelete = () => {
+    dispatch(destroy(id, loginStatus.token))
+  }
 
   if (view.loading) {
     return (
@@ -81,7 +84,6 @@ const View = () => {
         </div>
       </div>
       <footer className='card-footer d-flex justify-content-between'>
-        <button className='btn' type='button'><FontAwesomeIcon icon={faTrash} style={{ color: 'black', fontSize: '20px' }} /></button>
         {
           edit ? (
             <>
@@ -89,7 +91,10 @@ const View = () => {
               <button className='btn'  type='button' onClick={toggleEdit}><FontAwesomeIcon icon={faUndo} style={{ color: 'black', fontSize: '20px' }} /></button>
             </>
           ) : (
+            <>
             <button className='btn' type='button' onClick={toggleEdit}><FontAwesomeIcon icon={faEdit} style={{ color: 'black', fontSize: '20px' }} /></button>
+            <button className='btn' type='button'><FontAwesomeIcon icon={faTrash} style={{ color: 'black', fontSize: '20px' }} onClick={handleDelete} /></button>
+            </>
           )
         }
       </footer>

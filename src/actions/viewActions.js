@@ -53,15 +53,15 @@ export const update = (id, newContent, token) => (dispatch) => {
     });
 };
 
-export const destroy = (token) => (dispatch) => {
+export const destroy = (id, token) => (dispatch) => {
   console.log(token);
   dispatch(sendingRequest());
-  fetch('http://localhost:3000/api/v1/watchlists/', {
-    method: 'GET',
+  fetch(`http://localhost:3000/api/v1/watchlists/${id}`, {
+    method: 'DELETE',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: token,
+      Authorization: `bearer ${token}`,
     },
   })
     .then((response) => response.json())
@@ -69,8 +69,8 @@ export const destroy = (token) => (dispatch) => {
       if (data.status === 'Error') {
         throw new Error(data.message);
       }
-      console.log(data.data);
-      dispatch(Success(data.data));
+      console.log(data.message);
+      dispatch(Success(data.message));
       return data;
     })
     .catch((error) => {

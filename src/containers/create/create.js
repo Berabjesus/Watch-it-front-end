@@ -44,7 +44,7 @@ const Create = () => {
     )
   } else {
     return (
-      <section className="d-flex justify-content-center pt-5 vhc-100">
+      <section className="d-flex justify-content-center pt-4 vhc-100">
       <fieldset className={`col-9 col-md-6 align-self-start p-3 pb-4 shadow ${createCSs.fieldset} ${animateOnError}`}>
         <form className="d-flex flex-column" method="post">
           <div className="input-group mb-2">
@@ -62,7 +62,7 @@ const Create = () => {
           <div className="input-group mb-2">
             <label className="w-100" htmlFor="content">
               Content
-              <input placeholder="content" className="form-control border border-dark" id="content" type='text' onChange={(e) => setContent(e.target.value)} required />
+              <textarea cols='20' rows='5' placeholder="content" className="form-control border border-dark" id="content" type='text' onChange={(e) => setContent(e.target.value)} required />
             </label>
           </div>
           <div className="input-group mb-2">
