@@ -1,5 +1,3 @@
-// /* eslint disable */
-
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';

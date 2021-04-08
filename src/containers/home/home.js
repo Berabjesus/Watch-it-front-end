@@ -8,15 +8,13 @@ import Item from '../../components/home/item'
 import homeCss from './home.module.css';
 import {loginSuccess } from '../../actions/loginAction';
 import {getToken, getUsername} from '../../helpers/tokenHandler'
+import LoadingIcon from '../../components/common/loadingIcon';
 
 const Home = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.session);
-  console.log(getToken());
   if (!loginStatus.isLoggedIn) {
     if (getToken()) {
-      console.log('token found');
-      console.log(getToken());
       dispatch(query(getToken()));
       dispatch(loginSuccess({
         status: '202',
@@ -30,22 +28,14 @@ const Home = () => {
   }
   const userWatchList = useSelector((state) => state.userWatchList);
   React.useEffect(() => {
-    console.log('whyyy');
-    console.log('tokkkenenenens');
-    console.log(loginStatus.token);
     if (loginStatus.isLoggedIn) {
       dispatch(query(loginStatus.token))
     }
   }, []);
-  console.log(userWatchList.data);
-  //       <input type="range" name="" id=""/>
 
   if (userWatchList.loading) {
     return (
-      <span className="d-flex flex-column align-items-center centered">
-          <SpiralSpinner size={120} frontColor="#42B5E8" loading />
-          <p className="h6 font-weight-light mt-3">Loading data...</p>
-        </span>
+      <LoadingIcon />
     )
   } else if (userWatchList.error !== null) {
     return (
