@@ -1,21 +1,20 @@
 import * as userTypes from '../types/userTypes';
 
-export const fetchingData = () => ({
+const fetchingData = () => ({
   type: userTypes.USER_DATA_FETCH_REQUEST,
 });
 
-export const fetchSuccess = (data) => ({
+const fetchSuccess = (data) => ({
   type: userTypes.USER_DATA_FETCH_SUCCESS,
   payload: data,
 });
 
-export const fetchFail = (data) => ({
+const fetchFail = (data) => ({
   type: userTypes.USER_DATA_FETCH_FAIL,
   payload: data,
 });
 
-export const query = (token) => (dispatch) => {
-  console.log(token);
+const query = (token) => (dispatch) => {
   dispatch(fetchingData());
   fetch('http://localhost:3000/api/v1/watchlists/', {
     method: 'GET',
@@ -30,7 +29,6 @@ export const query = (token) => (dispatch) => {
       if (data.status === 'Error') {
         throw new Error(data.message);
       }
-      console.log(data.data);
       dispatch(fetchSuccess(data.data));
       return data;
     })
@@ -39,3 +37,5 @@ export const query = (token) => (dispatch) => {
       return error;
     });
 };
+
+export default query;

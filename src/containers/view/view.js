@@ -74,8 +74,7 @@ const View = () => {
                 <h5 className="card-title border-bottom pb-4">{date}</h5>
                 <p className="card-text">{filteredItem.content}</p>
                 <a href={filteredItem.link} className="btn btn-primary mt-4">
-                  Go to
-                  {filteredItem.link}
+                  {`Go to ${filteredItem.link}`}
                 </a>
               </>
             )

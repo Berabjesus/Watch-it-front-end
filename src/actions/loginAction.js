@@ -1,6 +1,6 @@
 import * as loginTypes from '../types/loginTypes';
 
-export const loggingIn = () => ({
+const loggingIn = () => ({
   type: loginTypes.LOGIN_REQUEST,
 });
 
@@ -9,7 +9,7 @@ export const loginSuccess = (data) => ({
   payload: data,
 });
 
-export const loginFail = (data) => ({
+const loginFail = (data) => ({
   type: loginTypes.LOGIN_FAIL,
   payload: data,
 });
@@ -34,8 +34,6 @@ export const login = (credentials) => (dispatch) => {
       if (data.status === 'Error') {
         throw new Error(data.message);
       }
-      console.log('herherhreh');
-      console.log(data);
       dispatch(loginSuccess(data));
       return data;
     })

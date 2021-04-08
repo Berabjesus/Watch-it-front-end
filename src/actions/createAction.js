@@ -1,19 +1,19 @@
 import * as createTypes from '../types/createTypes';
 
-export const creating = () => ({
+const creating = () => ({
   type: createTypes.CREATE_REQUEST,
 });
 
-export const createSuccess = () => ({
+const createSuccess = () => ({
   type: createTypes.CREATE_SUCCESS,
 });
 
-export const createFail = (data) => ({
+const createFail = (data) => ({
   type: createTypes.CREATE_FAIL,
   payload: data,
 });
 
-export const create = (data, token) => (dispatch) => {
+const create = (data, token) => (dispatch) => {
   dispatch(creating());
   fetch('http://localhost:3000/api/v1/watchlists/', {
     method: 'POST',
@@ -36,3 +36,5 @@ export const create = (data, token) => (dispatch) => {
       dispatch(createFail(error.message.split(',')));
     });
 };
+
+export default create;
