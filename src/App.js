@@ -8,7 +8,7 @@ import Login from './containers/session/login';
 import Home from './containers/home/home';
 import Create from './containers/create/create';
 import View from './containers/view/view';
-
+import Error from './components/error/error';
 import store from './store';
 
 const App = () => (
@@ -22,6 +22,7 @@ const App = () => (
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/create/:username" component={Create} />
         <Route exact path="/view/:user/:id" component={View} />
+        <Route path="*" component={Error} />
       </Switch>
     </div>
     <Footer />

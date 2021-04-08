@@ -14,6 +14,10 @@ export const loginFail = (data) => ({
   payload: data,
 });
 
+export const logout = () => ({
+  type: loginTypes.LOGOUT,
+});
+
 export const login = (credentials) => (dispatch) => {
   dispatch(loggingIn());
   fetch('http://localhost:3000/api/v1/login/', {

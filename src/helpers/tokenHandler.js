@@ -5,3 +5,7 @@ export const setCredentials = (username, token) => {
 
 export const getToken = () => JSON.parse(localStorage.getItem('watchItToken'));
 export const getUsername = () => JSON.parse(localStorage.getItem('watchItUsername'));
+export const removeUser = () => {
+  localStorage.removeItem('watchItToken');
+  localStorage.removeItem('watchItUsername');
+};
