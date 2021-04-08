@@ -4,8 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faPlus,faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import headerCss from './nav.module.css';
 
 const Header = () => {
