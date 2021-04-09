@@ -21,7 +21,7 @@ const Footer = () => {
         <Link to={`/chart/${loginStatus.username}`} className={`d-flex flex-column align-items-center text-white ${footerCss.flex_20}`}>
           <FontAwesomeIcon icon={faChartPie} style={{ color: 'white', fontSize: '25px' }} />
         </Link>
-        <Link to="/" className={`d-flex flex-column align-items-center text-white ${footerCss.flex_20}`}>
+        <Link to="/about" className={`d-flex flex-column align-items-center text-white ${footerCss.flex_20}`}>
           <FontAwesomeIcon icon={faInfoCircle} style={{ color: 'white', fontSize: '25px' }} />
         </Link>
       </nav>

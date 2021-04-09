@@ -36,7 +36,8 @@ const Home = () => {
     return (
       <LoadingIcon />
     );
-  } if (userWatchList.error !== null) {
+  }
+  if (userWatchList.error !== null) {
     return (
       <span className="text-white centered">
         <h3>Error fetching data, Try again later</h3>
@@ -60,12 +61,12 @@ const Home = () => {
         ) : (
           <div>
             <em className="h6">
-              You have
-              {userWatchList.data && userWatchList.data.length}
-              items in your watchlist. Click on the + button to add items.
+              {`You have
+              ${userWatchList.data && userWatchList.data.length}
+              items in your watchlist. Click on the + button to add items.`}
             </em>
             {
-              userWatchList.data && userWatchList.data.map((item) => <Item key={item.id} id={item.id} title={item.title} date={item.date} />)
+              userWatchList.data && userWatchList.data.map((item, i) => <Item key={item.id} id={item.id} num={i + 1} title={item.title} date={item.date} />)
             }
           </div>
         )

@@ -11,7 +11,7 @@ import LoadingIcon from '../../components/common/loadingIcon';
 const View = () => {
   const loginStatus = useSelector((state) => state.session);
   if (!loginStatus.isLoggedIn) {
-    return <Redirect to="/login" />;
+    return <Redirect to="/" />;
   }
   const userWatchList = useSelector((state) => state.userWatchList);
   const view = useSelector((state) => state.view);
