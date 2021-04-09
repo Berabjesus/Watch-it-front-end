@@ -10,8 +10,7 @@ const Item = ({
   const loginStatus = useSelector((state) => state.session);
   return (
     <Link to={`/view/${loginStatus.username}/${id}`} className="card d-flex p-2 mt-1 mb-2 shadow-sm">
-      <p>{num}</p>
-      <p>{title}</p>
+      <p className="border-bottom pb-2 mb-2"><strong>{`${num}. ${title}`}</strong></p>
       <p>{formatedDate.toDateString()}</p>
     </Link>
   );

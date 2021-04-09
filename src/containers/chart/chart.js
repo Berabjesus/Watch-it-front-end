@@ -23,11 +23,11 @@ const Chart = () => {
       }, 0)
     }
   })
-  const defaultData = [ { y: 10 }, { y: 0 }, { y: 0 }, { y: 0 }];
+  const defaultData = [ { x: '', y: 1 }, { x: '', y: 1 }, {x: '', y: 1 }, {x: '', y: 1 }];
   const [data, setdata] = React.useState(defaultData);
   React.useEffect(() => {
     setdata(daysCount);
-  }, []);
+  }, []);  
   return (
     <section className={`d-flex flex-column justify-content-center mt-5  mx-auto ${chartCss.wrapper}`}>
       <h3 className=' text-center border-bottom '>Most active days</h3>
@@ -41,7 +41,7 @@ const Chart = () => {
           labelRadius={({ innerRadius }) => innerRadius + 15 }
           radius={({ datum }) => 120 + datum.y * 15}
           innerRadius={70}
-          animate={{ duration: 2000, easing: 'bounceOut'}}
+          animate={{ duration: 1000, easing: 'bounceOut'}}
           cornerRadius={({ datum }) => datum.y * 4}
           padAngle={({ datum }) => datum.y}
           style={{

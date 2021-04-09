@@ -47,7 +47,7 @@ const Home = () => {
   return (
     <section className="pt-3">
       <header className="d-flex justify-content-between border-bottom pb-3">
-        <h4>{`hi ${loginStatus.username}`}</h4>
+        <h4>{`Hi ${loginStatus.username}`}</h4>
         <Link to="/" className={`d-flex align-items-center justify-content-center font-weight-bold text-white p-1 ${homeCss.userIcon}`}>{loginStatus.username[0] && loginStatus.username[0].toUpperCase()}</Link>
       </header>
       {

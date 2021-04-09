@@ -35,7 +35,8 @@ const Login = () => {
     return (
       <LoadingIcon />
     );
-  } if (loginStatus.isLoggedIn && loginStatus.token) {
+  }
+  if (loginStatus.isLoggedIn && loginStatus.token) {
     setCredentials(loginStatus.username, loginStatus.token);
     return (
       <Redirect to={`/home/${loginStatus.username}`} />

@@ -24,7 +24,6 @@ export const reset = () => ({
 });
 
 export const update = (id, newContent, token) => (dispatch) => {
-  console.log(token);
   dispatch(sendingRequest());
   fetch(`http://localhost:3000/api/v1/watchlists/${id}`, {
     method: 'PUT',
@@ -37,13 +36,9 @@ export const update = (id, newContent, token) => (dispatch) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       if (data.status === 'Error') {
-        console.log('error here ');
-
         throw new Error(data.message);
       }
-      console.log(data.message);
       dispatch(Success(data.message));
       return data;
     })
@@ -54,7 +49,6 @@ export const update = (id, newContent, token) => (dispatch) => {
 };
 
 export const destroy = (id, token) => (dispatch) => {
-  console.log(token);
   dispatch(sendingRequest());
   fetch(`http://localhost:3000/api/v1/watchlists/${id}`, {
     method: 'DELETE',
@@ -69,7 +63,6 @@ export const destroy = (id, token) => (dispatch) => {
       if (data.status === 'Error') {
         throw new Error(data.message);
       }
-      console.log(data.message);
       dispatch(Success(data.message));
       return data;
     })
