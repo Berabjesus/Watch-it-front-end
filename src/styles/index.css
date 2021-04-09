@@ -47,3 +47,7 @@ p,a {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.wrapper {
+  margin: 0 0 5rem 0;
+}

@@ -8,13 +8,14 @@ import Login from './containers/session/login';
 import Home from './containers/home/home';
 import Create from './containers/create/create';
 import View from './containers/view/view';
+import Chart from './containers/chart/chart';
 import Error from './components/error/error';
 import store from './store';
 
 const App = () => (
   <Provider store={store}>
     <Header />
-    <div className="px-2 pt-5 mb-3">
+    <div className="wrapper px-2 pt-5">
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/home/:id" component={Home} />
@@ -22,6 +23,7 @@ const App = () => (
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/create/:username" component={Create} />
         <Route exact path="/view/:user/:id" component={View} />
+        <Route exact path="/chart/:username" component={Chart} />
         <Route path="*" component={Error} />
       </Switch>
     </div>
