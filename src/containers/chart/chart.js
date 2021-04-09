@@ -34,7 +34,7 @@ const Chart = () => {
       {
         daysCount.length > 0 ? (
           <>
-          <VictoryPie className={`border shadow-sm ${chartCss.VictoryContainer}`}
+          <VictoryPie className='border shadow-sm'
           colorScale={["#531919", "#003f5c" ,"#EB5C5D","#ECE63A", "#E9A44F", "#4863A6", "#4863A6"]}
           data={data}
           labels={({ datum }) => `${datum.x}\n${datum.y}`}
