@@ -25,7 +25,7 @@ export const reset = () => ({
 
 export const update = (id, newContent, token) => (dispatch) => {
   dispatch(sendingRequest());
-  fetch(`http://localhost:3000/api/v1/watchlists/${id}`, {
+  fetch(`https://watch-it-api-v1.herokuapp.com/api/v1/watchlists/${id}`, {
     method: 'PUT',
     mode: 'cors',
     headers: {
@@ -50,7 +50,7 @@ export const update = (id, newContent, token) => (dispatch) => {
 
 export const destroy = (id, token) => (dispatch) => {
   dispatch(sendingRequest());
-  fetch(`http://localhost:3000/api/v1/watchlists/${id}`, {
+  fetch(`https://watch-it-api-v1.herokuapp.com/api/v1/watchlists/${id}`, {
     method: 'DELETE',
     mode: 'cors',
     headers: {
