@@ -7,16 +7,23 @@
 /* Global values */
 
 :root {
-  --theme-1: #42B5E8;
-  --theme-2: #2A313A;
-  --theme-3: #97E494;
+  --theme-1: #42b5e8;
+  --theme-2: #2a313a;
+  --theme-3: #97e494;
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: Helvetica, sans-serif;
   font-weight: 700;
 }
-p,a {
+
+p,
+a {
   font-family: Helvetica, sans-serif;
   font-weight: 400;
 }
