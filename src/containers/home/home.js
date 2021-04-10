@@ -39,7 +39,7 @@ const Home = () => {
   }
   if (userWatchList.error !== null) {
     return (
-      <span className="text-white centered">
+      <span className="text-dark centered">
         <h3>Error fetching data, Try again later</h3>
       </span>
     );

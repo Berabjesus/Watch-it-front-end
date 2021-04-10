@@ -11,7 +11,8 @@
 [The project specification can be found here](https://www.notion.so/Final-Capstone-Project-Tracking-App-22e454da738c46efaf17721826841772)
 
 ## Sample Screenshot
-
+![image](https://user-images.githubusercontent.com/64360974/114253104-52a8fe00-99b1-11eb-8e3e-e637213e6cf1.png)
+![image](https://user-images.githubusercontent.com/64360974/114253352-8c2e3900-99b2-11eb-8325-ba3e5bb6ef61.png)
 ## Built With
 
 - React
