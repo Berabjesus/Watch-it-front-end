@@ -4,7 +4,7 @@
 
 ## Live Demo
 
-[click to view a live demo of the project]()
+[click to view a live demo of the project](https://watch-it-app.netlify.app/)
 
 ## Project Specification
 
