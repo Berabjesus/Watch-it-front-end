@@ -15,7 +15,7 @@ const createFail = (data) => ({
 
 const create = (data, token) => (dispatch) => {
   dispatch(creating());
-  fetch('https://watch-it-api-v1.herokuapp.com/api/v1/watchlists/', {
+  fetch('http://localhost:3000/api/v1/watchlists/', {
     method: 'POST',
     mode: 'cors',
     headers: {

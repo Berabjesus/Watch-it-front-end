@@ -20,7 +20,7 @@ export const logout = () => ({
 
 export const login = (credentials) => (dispatch) => {
   dispatch(loggingIn());
-  fetch('https://watch-it-api-v1.herokuapp.com/api/v1/login/', {
+  fetch('http://localhost:3000/api/v1/sessions/', {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -45,7 +45,7 @@ export const login = (credentials) => (dispatch) => {
 
 export const signup = (credentials) => (dispatch) => {
   dispatch(loggingIn());
-  fetch('https://watch-it-api-v1.herokuapp.com/api/v1/signup/', {
+  fetch('http://localhost:3000/api/v1/users/', {
     method: 'POST',
     mode: 'cors',
     headers: {
