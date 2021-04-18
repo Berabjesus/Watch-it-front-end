@@ -8,7 +8,7 @@ const fetchSuccess = (data) => ({
 
 const query = (token) => (dispatch) => {
   dispatch(setLoading());
-  fetch('http://localhost:3000/api/v1/watchlists/', {
+  fetch('https://watch-it-api-v1.herokuapp.com/api/v1/watchlists/', {
     method: 'GET',
     mode: 'cors',
     headers: {
