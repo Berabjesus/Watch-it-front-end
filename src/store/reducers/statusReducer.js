@@ -14,8 +14,8 @@ const statusReducer = (state = initialState, action) => {
       };
     case SET_SUCCESS:
       return {
-        ...state,
         loading: false,
+        error: null,
       };
     case SET_ERRORS:
       console.log(action);

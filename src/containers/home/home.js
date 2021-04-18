@@ -12,6 +12,7 @@ import LoadingIcon from '../../components/common/loadingIcon';
 const Home = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.session);
+  const requestStatus = useSelector((state) => state.status);
   if (!loginStatus.isLoggedIn) {
     if (getToken()) {
       dispatch(query(getToken()));
@@ -32,12 +33,12 @@ const Home = () => {
     }
   }, []);
 
-  if (userWatchList.loading) {
+  if (requestStatus.loading) {
     return (
       <LoadingIcon />
     );
   }
-  if (userWatchList.error !== null) {
+  if (requestStatus.error !== null) {
     return (
       <span className="text-dark centered">
         <h3>Error fetching data, Try again later</h3>

@@ -8,6 +8,7 @@ import LoadingIcon from '../../components/common/loadingIcon';
 const Create = () => {
   const loginStatus = useSelector((state) => state.session);
   const createStatus = useSelector((state) => state.create);
+  const requestStatus = useSelector((state) => state.status);
   const dispatch = useDispatch();
   const [title, setTitle] = React.useState('');
   const [link, setLink] = React.useState('');
@@ -33,7 +34,7 @@ const Create = () => {
 
   if (!loginStatus.isLoggedIn || !loginStatus.token) {
     return <Redirect to="/login" />;
-  } if (createStatus.sending) {
+  } if (requestStatus.loading) {
     return <LoadingIcon />;
   }
   return (
@@ -65,10 +66,10 @@ const Create = () => {
             </label>
           </div>
           {
-            createStatus.error && createStatus.error.length > 0 && createStatus.error.map((err) => <em key={err} className="h6 text-danger text-decoration-none">{err}</em>)
+            requestStatus.error && requestStatus.error.length > 0 && requestStatus.error.map((err) => <em key={err} className="h6 text-danger text-decoration-none">{err}</em>)
           }
           {
-            createStatus.sent && <em className="h6 text-info text-decoration-none text-center">Item created</em>
+            createStatus.created && <em className="h6 text-info text-decoration-none text-center">Item created</em>
           }
           <div className="d-flex flex-column align-items-center">
             <button className="btn text-white align-self-center mt-2 bg-theme-2" type="button" onClick={handleLogin}>Add</button>

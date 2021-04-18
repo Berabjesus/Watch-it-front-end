@@ -1,19 +1,12 @@
 import * as createTypes from '../types/createTypes';
-
-const creating = () => ({
-  type: createTypes.CREATE_REQUEST,
-});
+import { setLoading, setSuccess, setErrors } from './statusAction';
 
 const createSuccess = () => ({
   type: createTypes.CREATE_SUCCESS,
 });
 
-const createFail = (data) => ({
-  type: createTypes.CREATE_FAIL,
-  payload: data,
-});
 const create = (data, token) => (dispatch) => {
-  dispatch(creating());
+  dispatch(setLoading());
   // fetch('https://watch-it-api-v1.herokuapp.com/api/v1/watchlists/', {
   fetch('http://localhost:3000/api/v1/watchlists/', {
     method: 'POST',
@@ -31,9 +24,10 @@ const create = (data, token) => (dispatch) => {
         throw new Error(data.message);
       }
       dispatch(createSuccess());
+      dispatch(setSuccess());
     })
     .catch((error) => {
-      dispatch(createFail(error.message.split(',')));
+      dispatch(setErrors(error.message.split(',')));
     });
 };
 

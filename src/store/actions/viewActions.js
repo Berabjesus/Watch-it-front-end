@@ -1,21 +1,8 @@
 import * as viewTypes from '../types/viewTypes';
-
-const sendingRequest = () => ({
-  type: viewTypes.REQUEST,
-});
+import { setLoading, setSuccess, setErrors } from './statusAction';
 
 const Success = (data) => ({
   type: viewTypes.SUCCESS,
-  payload: data,
-});
-
-const editFail = (data) => ({
-  type: viewTypes.EDIT_FAIL,
-  payload: data,
-});
-
-const deleteFail = (data) => ({
-  type: viewTypes.DELETE_FAIL,
   payload: data,
 });
 
@@ -24,7 +11,7 @@ export const reset = () => ({
 });
 
 export const update = (id, newContent, token) => (dispatch) => {
-  dispatch(sendingRequest());
+  dispatch(setLoading());
   fetch(`http://localhost:3000/api/v1/watchlists/${id}`, {
     method: 'PUT',
     mode: 'cors',
@@ -39,17 +26,18 @@ export const update = (id, newContent, token) => (dispatch) => {
       if (data.status === 'Error') {
         throw new Error(data.message);
       }
-      dispatch(Success(data.message));
+      dispatch(Success(data));
+      dispatch(setSuccess());
       return data;
     })
     .catch((error) => {
-      dispatch(editFail(error.message));
+      dispatch(setErrors(error.message));
       return error;
     });
 };
 
 export const destroy = (id, token) => (dispatch) => {
-  dispatch(sendingRequest());
+  dispatch(setLoading());
   fetch(`http://localhost:3000/api/v1/watchlists/${id}`, {
     method: 'DELETE',
     mode: 'cors',
@@ -63,11 +51,12 @@ export const destroy = (id, token) => (dispatch) => {
       if (data.status === 'Error') {
         throw new Error(data.message);
       }
-      dispatch(Success(data.message));
+      dispatch(Success(data));
+      dispatch(setSuccess());
       return data;
     })
     .catch((error) => {
-      dispatch(deleteFail(error.message));
+      dispatch(setErrors(error.message));
       return error;
     });
 };

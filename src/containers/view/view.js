@@ -14,6 +14,7 @@ const View = () => {
     return <Redirect to="/" />;
   }
   const userWatchList = useSelector((state) => state.userWatchList);
+  const requestStatus = useSelector((state) => state.status);
   const view = useSelector((state) => state.view);
   const dispatch = useDispatch();
 
@@ -48,11 +49,11 @@ const View = () => {
   const handleDelete = () => {
     dispatch(destroy(id, loginStatus.token));
   };
-
-  if (view.loading) {
-    return <LoadingIcon />;
-  } if (view.data) {
+  if (view.data) {
     return <Redirect to={`/home/${loginStatus.username}`} />;
+  }
+  if (requestStatus.loading) {
+    return <LoadingIcon />;
   }
   return (
     <section className="shadow">
