@@ -1,8 +1,8 @@
-import * as createTypes from '../types/createTypes';
+import { CREATE_SUCCESS } from '../types';
 import { setLoading, setSuccess, setErrors } from './statusAction';
 
 const createSuccess = () => ({
-  type: createTypes.CREATE_SUCCESS,
+  type: CREATE_SUCCESS,
 });
 
 const create = (data, token) => (dispatch) => {

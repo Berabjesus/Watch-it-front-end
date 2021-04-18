@@ -2,7 +2,7 @@ import { render, act } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
-import store from '../../../store';
+import store from '../../../store/store';
 import Create from '../create';
 
 describe('Rendering component', () => {

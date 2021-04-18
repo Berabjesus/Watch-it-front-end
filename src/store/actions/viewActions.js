@@ -1,8 +1,8 @@
-import * as viewTypes from '../types/viewTypes';
+import { UPDATE_DELETE_SUCCESS } from '../types';
 import { setLoading, setSuccess, setErrors } from './statusAction';
 
 const Success = (data) => ({
-  type: viewTypes.SUCCESS,
+  type: UPDATE_DELETE_SUCCESS,
   payload: data,
 });
 

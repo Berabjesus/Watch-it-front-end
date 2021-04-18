@@ -1,14 +1,12 @@
-import * as viewTypes from '../types/viewTypes';
+import { UPDATE_DELETE_SUCCESS } from '../types';
 
 const initialState = {
-  loading: false,
   data: null,
-  error: null,
 };
 
 const viewReducer = (state = initialState, action) => {
   switch (action.type) {
-    case viewTypes.SUCCESS:
+    case UPDATE_DELETE_SUCCESS:
       return {
         ...state,
         loading: false,

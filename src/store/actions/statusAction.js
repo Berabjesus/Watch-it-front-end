@@ -1,4 +1,4 @@
-import { SET_LOADING, SET_ERRORS, SET_SUCCESS } from '../types/statusTypes';
+import { SET_LOADING, SET_ERRORS, SET_SUCCESS } from '../types';
 
 export const setLoading = () => ({
   type: SET_LOADING,

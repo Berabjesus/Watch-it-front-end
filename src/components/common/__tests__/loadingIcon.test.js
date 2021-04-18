@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import LoadingIcon from '../loadingIcon';
-import store from '../../../store';
+import store from '../../../store/store';
 
 describe('LoadingIcon common component - ', () => {
   it('matches the snapshot', () => {

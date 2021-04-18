@@ -1,4 +1,4 @@
-import * as createTypes from '../types/createTypes';
+import { CREATE_SUCCESS } from '../types';
 
 const initialState = {
   created: false,
@@ -6,7 +6,7 @@ const initialState = {
 
 const createReducer = (state = initialState, action) => {
   switch (action.type) {
-    case createTypes.CREATE_SUCCESS:
+    case CREATE_SUCCESS:
       return {
         created: true,
       };

@@ -1,8 +1,8 @@
-import * as userTypes from '../types/userTypes';
+import { USER_DATA_FETCH_SUCCESS } from '../types';
 import { setLoading, setSuccess, setErrors } from './statusAction';
 
 const fetchSuccess = (data) => ({
-  type: userTypes.USER_DATA_FETCH_SUCCESS,
+  type: USER_DATA_FETCH_SUCCESS,
   payload: data,
 });
 

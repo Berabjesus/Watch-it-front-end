@@ -1,13 +1,13 @@
-import * as loginTypes from '../types/loginTypes';
+import { LOGIN_SUCCESS, LOGOUT } from '../types';
 import { setLoading, setSuccess, setErrors } from './statusAction';
 
 export const loginSuccess = (data) => ({
-  type: loginTypes.LOGIN_SUCCESS,
+  type: LOGIN_SUCCESS,
   payload: data,
 });
 
 export const logout = () => ({
-  type: loginTypes.LOGOUT,
+  type: LOGOUT,
 });
 
 export const login = (credentials) => (dispatch) => {

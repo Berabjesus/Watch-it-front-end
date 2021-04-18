@@ -1,4 +1,4 @@
-import * as userTypes from '../types/userTypes';
+import { USER_DATA_FETCH_SUCCESS } from '../types';
 
 const initialState = {
   data: null,
@@ -6,7 +6,7 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case userTypes.USER_DATA_FETCH_SUCCESS:
+    case USER_DATA_FETCH_SUCCESS:
       return {
         ...state,
         loading: false,
