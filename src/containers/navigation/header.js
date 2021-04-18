@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import headerCss from './nav.module.css';
 import { removeUser } from '../../helpers/tokenHandler';
-import { logout } from '../../actions/loginAction';
+import { logout } from '../../store/actions/loginAction';
 
 const Header = () => {
   const loginStatus = useSelector((state) => state.session);

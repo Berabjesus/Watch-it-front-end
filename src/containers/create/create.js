@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import createCSs from './create.module.css';
-import create from '../../actions/createAction';
+import create from '../../store/actions/createAction';
 import LoadingIcon from '../../components/common/loadingIcon';
 
 const Create = () => {

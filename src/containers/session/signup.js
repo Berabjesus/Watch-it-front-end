@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import sessionsCSs from './sessions.module.css';
-import { signup } from '../../actions/loginAction';
+import { signup } from '../../store/actions/loginAction';
 import LoadingIcon from '../../components/common/loadingIcon';
 import UsernameAndPassword from '../../components/session/usernameAndPassword';
 import { setCredentials } from '../../helpers/tokenHandler';
@@ -11,16 +11,17 @@ import Buttons from '../../components/session/buttons';
 const Login = () => {
   const loginStatus = useSelector((state) => state.session);
   const dispatch = useDispatch();
+  const requestStatus = useSelector((state) => state.status);
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [passwordConfrim, setpasswordConfrim] = React.useState('');
   const [animateOnError, setAnimateOnError] = React.useState('');
 
   React.useEffect(() => {
-    if (loginStatus.error) {
+    if (requestStatus.error) {
       setAnimateOnError(sessionsCSs.shake);
     }
-  }, [loginStatus.error]);
+  }, [requestStatus.error]);
 
   const handleSignUp = () => {
     if (username && password) {
@@ -33,7 +34,7 @@ const Login = () => {
     }
   };
 
-  if (loginStatus.loading) {
+  if (requestStatus.loading) {
     return <LoadingIcon />;
   } if (loginStatus.isLoggedIn && loginStatus.token) {
     setCredentials(loginStatus.username, loginStatus.token);
@@ -54,7 +55,7 @@ const Login = () => {
           </div>
           <div className="d-flex flex-column align-items-start">
             {
-            loginStatus.error && Array.isArray(loginStatus.error) && loginStatus.error.length > 0 && loginStatus.error.map((err) => <em key={err} className="h6 text-danger text-decoration-none">{err}</em>)
+            requestStatus.error && Array.isArray(requestStatus.error) && requestStatus.error.length > 0 && requestStatus.error.map((err) => <em key={err} className="h6 text-danger text-decoration-none">{err}</em>)
           }
           </div>
           <Buttons label1="Sign Up" label2="Login" handleClick={handleSignUp} />

@@ -11,7 +11,7 @@ import View from './containers/view/view';
 import Chart from './containers/chart/chart';
 import About from './containers/about/about';
 import Error from './components/error/error';
-import store from './store';
+import store from './store/store';
 
 const App = () => (
   <Provider store={store}>

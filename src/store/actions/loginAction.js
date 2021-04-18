@@ -1,16 +1,8 @@
 import * as loginTypes from '../types/loginTypes';
-
-const loggingIn = () => ({
-  type: loginTypes.LOGIN_REQUEST,
-});
+import { setLoading, setSuccess, setErrors } from './statusAction';
 
 export const loginSuccess = (data) => ({
   type: loginTypes.LOGIN_SUCCESS,
-  payload: data,
-});
-
-const loginFail = (data) => ({
-  type: loginTypes.LOGIN_FAIL,
   payload: data,
 });
 
@@ -19,8 +11,8 @@ export const logout = () => ({
 });
 
 export const login = (credentials) => (dispatch) => {
-  dispatch(loggingIn());
-  fetch('https://watch-it-api-v1.herokuapp.com/api/v1/sessions/', {
+  dispatch(setLoading());
+  fetch('http://localhost:3000/api/v1/sessions/', {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -35,17 +27,18 @@ export const login = (credentials) => (dispatch) => {
         throw new Error(data.message);
       }
       dispatch(loginSuccess(data));
+      dispatch(setSuccess());
       return data;
     })
     .catch((error) => {
-      dispatch(loginFail(error.message));
+      dispatch(setErrors(error.message));
       return error;
     });
 };
 
 export const signup = (credentials) => (dispatch) => {
-  dispatch(loggingIn());
-  fetch('https://watch-it-api-v1.herokuapp.com/api/v1/users/', {
+  dispatch(setLoading());
+  fetch('http://localhost:3000/api/v1/users/', {
     method: 'POST',
     mode: 'cors',
     headers: {
@@ -60,10 +53,11 @@ export const signup = (credentials) => (dispatch) => {
         throw new Error(data.message);
       }
       dispatch(loginSuccess(data));
+      dispatch(setSuccess());
       return data;
     })
     .catch((error) => {
-      dispatch(loginFail(error.message.split(',')));
+      dispatch(setErrors(error.message.split(',')));
       return error;
     });
 };

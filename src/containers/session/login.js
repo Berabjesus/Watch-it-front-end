@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import sessionsCSs from './sessions.module.css';
-import { login } from '../../actions/loginAction';
+import { login } from '../../store/actions/loginAction';
 import { setCredentials } from '../../helpers/tokenHandler';
 import LoadingIcon from '../../components/common/loadingIcon';
 import UsernameAndPassword from '../../components/session/usernameAndPassword';
@@ -11,15 +11,15 @@ import Buttons from '../../components/session/buttons';
 const Login = () => {
   const dispatch = useDispatch();
   const loginStatus = useSelector((state) => state.session);
+  const requestStatus = useSelector((state) => state.status);
   const [username, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [animateOnError, setAnimateOnError] = React.useState('');
-
   React.useEffect(() => {
-    if (loginStatus.error) {
+    if (requestStatus.error) {
       setAnimateOnError(sessionsCSs.shake);
     }
-  }, [loginStatus.error]);
+  }, [requestStatus.error]);
 
   const handleLogin = () => {
     if (username && password) {
@@ -31,7 +31,7 @@ const Login = () => {
     }
   };
 
-  if (loginStatus.loading) {
+  if (requestStatus.loading) {
     return (
       <LoadingIcon />
     );
@@ -47,7 +47,7 @@ const Login = () => {
       <fieldset className={`col-9 col-md-6 align-self-start p-3 pb-4 shadow ${sessionsCSs.fieldset} ${animateOnError}`}>
         <form className="d-flex flex-column" method="post">
           <UsernameAndPassword setUsername={setUsername} setPassword={setPassword} />
-          <p className="h6 text-danger text-center"><em>{loginStatus.error}</em></p>
+          <p className="h6 text-danger text-center"><em>{requestStatus.error}</em></p>
           <Buttons label1="Login" label2="Sign up" handleClick={handleLogin} />
         </form>
       </fieldset>

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faTrash, faSave, faUndo, faEdit,
 } from '@fortawesome/free-solid-svg-icons';
-import { update, destroy, reset } from '../../actions/viewActions';
+import { update, destroy, reset } from '../../store/actions/viewActions';
 import LoadingIcon from '../../components/common/loadingIcon';
 
 const View = () => {

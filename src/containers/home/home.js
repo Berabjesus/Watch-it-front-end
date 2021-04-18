@@ -2,10 +2,10 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import query from '../../actions/userActions';
+import query from '../../store/actions/userActions';
 import Item from '../../components/home/item';
 import homeCss from './home.module.css';
-import { loginSuccess } from '../../actions/loginAction';
+import { loginSuccess } from '../../store/actions/loginAction';
 import { getToken, getUsername } from '../../helpers/tokenHandler';
 import LoadingIcon from '../../components/common/loadingIcon';
 
