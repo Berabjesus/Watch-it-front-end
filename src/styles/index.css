@@ -1,0 +1,60 @@
+/*
+*  CSS TABLE OF CONTENTS
+*
+*  1.0 - Global values
+*/
+
+/* Global values */
+
+:root {
+  --theme-1: #42b5e8;
+  --theme-2: #2a313a;
+  --theme-3: #97e494;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+p,
+a {
+  font-family: Helvetica, sans-serif;
+  font-weight: 400;
+}
+
+.bg-theme-1 {
+  background: var(--theme-1);
+}
+
+.bg-theme-2 {
+  background: var(--theme-2);
+}
+
+.bg-theme-3 {
+  background: var(--theme-3);
+}
+
+.border-custom {
+  border: 2px dashed red;
+}
+
+.vhc-100 {
+  height: calc(100vh - 50px);
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper {
+  margin: 0 0 5rem 0;
+}

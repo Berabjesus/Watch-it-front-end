@@ -1,0 +1,11 @@
+.zindex {
+  z-index: 99;
+}
+
+.flex_20 {
+  flex-basis: 20px;
+}
+
+.footer {
+  bottom: 0;
+}
